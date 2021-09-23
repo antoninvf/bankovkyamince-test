@@ -3,7 +3,7 @@ package com.company;
 public class Main {
 
     public static void main(String[] args) {
-        String koruny = "9095\n" +
+        String joruny = "9095\n" +
                 "8048\n" +
                 "8302\n" +
                 "1155\n" +
@@ -967,7 +967,7 @@ public class Main {
                 "1711\n" +
                 "68";
 
-        String[] korunys = koruny.split("\n");
+        String[] korunys = joruny.split("\n");
         int[] possibleN = {5000, 2000, 1000, 500, 200, 100, 50, 20, 10, 5, 2, 1};
         int[] counter = new int[possibleN.length];
 
@@ -975,18 +975,17 @@ public class Main {
 
         for (int i = 0; i < korunys.length; i++) {
             int input = Integer.parseInt(korunys[i]);
-            for (int j = 0; j < korunys[i].length(); j++) {
-                for (int k = 0; k < possibleN.length; k++) {
-                    if (input >= possibleN[k]) {
-                        counter[k] = input / possibleN[k];
-                        input = input - counter[k] * possibleN[k];
-                        if (counter[k] != 0) {
-                            totalNotes += counter[k];
-                        }
+            for (int j = 0; j < possibleN.length; j++) {
+                if (input >= possibleN[j]) {
+                    counter[j] = input / possibleN[j];
+                    input = input - counter[j] * possibleN[j];
+                    if (counter[j] != 0) {
+                        totalNotes += counter[j];
                     }
                 }
             }
         }
+
 
         System.out.println(totalNotes);
 
